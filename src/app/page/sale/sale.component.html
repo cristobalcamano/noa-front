@@ -1,0 +1,156 @@
+<app-nav></app-nav>
+<br><br>
+<div class="container">
+
+    <h1>Total de productos 2</h1>
+    <br>
+    <div class="row">
+        <!--Inicio carrusel-->
+        <div class="col-xl-9 col-lg-9 col-md-9 mb-9">
+            <div class="row" *ngFor="let service of servicioList">
+                <div class="col-xl-4 col-lg-4 col-md-4 mb-4">
+                    <div id="carouselExampleIndicators{{service.id}}" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div *ngFor="let i of service.imgService;">
+                                <div class="carousel-item" [class.active]="i.url==service.imgService[0].url">
+                                    <img src="{{i.url}}" class="d-block w-100" alt="First Slide" style="height: 200px;;">
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators{{service.id}}" role="button"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators{{service.id}}" role="button"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <!--Fin carrusel-->
+
+                <div class="col-xl-4 col-lg-4 col-md-4 mb-4 ">
+
+                    <label style="margin: 0px; font-size: 20px;">{{service.name}}</label>
+                    <br><br>
+                    <label>Referencias:</label>
+                    <ol class="list-group list-group-numbered">
+                        <li *ngFor="let i of service.item;">
+
+                            <div class="ms-2 me-auto" style="display: inline-flex;">
+                                <div>{{i.key}}:&nbsp;&nbsp;</div>
+                                <div style="color: gray;">{{i.value}}</div>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <br>
+                    <label>Referencias seleccionadas:</label>
+                    <ol class="list-group list-group-numbered">
+                        <li *ngFor="let i of service.item;">
+
+                            <div class="ms-2 me-auto" style="display: inline-flex;">
+                                <div>{{i.key}}:&nbsp;&nbsp;</div>
+                                <div
+                                    style="background: rgb(96, 193, 212); padding: 5px;border: solid 1px white;border-radius: 10px;color: white;">
+                                    {{i.value}}</div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 mb-4 ">
+                    <!--Precio-->
+
+                    <div style="display: inline-flex; margin: 0px; font-size: 20px;">
+                        <label>Precio: $ {{service.price}}</label>&nbsp;
+                        <label style="font-size: 10px;color: white;padding-left: 5px;
+                background: red; border-radius: 5px; padding: 2px;">
+                            <s> Antes {{service.beforePrice}}</s></label>
+                    </div>
+
+                    <!--Calificacion-->
+                    <br><br>
+                    <div class="ec-stars-wrapper">
+                        <label>Valoración: &nbsp;</label>&nbsp;
+                        <a style="color:rgb(241, 237, 0)" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                        <a style="color:rgb(241, 237, 0)" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                        <a style="color:rgb(241, 237, 0)" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+                        <a data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                        <a data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                        &nbsp;<label>&#160;&#160;<strong>4.5%</strong></label>
+                    </div>
+                    <br><br>
+                    <!--Botones de obciones-->
+                    <div style="position: relative;float: right; display: inline-flex;">
+
+                        <div>
+                            <a style="color: rgb(96, 193, 212); cursor: pointer; text-decoration: none;"
+                                routerLink="/product">Modificar</a>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div style="color: red; cursor: pointer;">Eliminar</div>
+                    </div>
+
+                </div>
+
+                <div style="width: 100%; padding: 0.5px; background: black;"></div>
+                <div style="width: 100%; padding: 10px; background: white;"></div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-3 mb-3" >
+
+            <div>
+                <div style="text-align: center; font-weight: bold;">
+                    <h1>Mi compra</h1>
+                </div>
+
+                <div style="position: relative; display: inline-flex; width: 100%; ">
+                    <div style="position: relative;">
+                        SubTotal:
+                    </div>
+                    <div style="position: relative; width: 100%; text-align: end;">
+                        $&nbsp;300000
+                    </div>
+                </div>
+                <div style="width: 100%; padding: 0.5px; background: black;"></div>
+                <br><br>
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <i class="bi bi-truck"></i>&#160;&#160;
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Recogida en punto
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <i class="bi bi-tags-fill"></i>&#160;&#160;
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Envío
+                    </label>
+                </div>
+                <br>
+                <small style="color: red;"><i class="bi bi-info-lg"></i>Tener que esta selección tiene un pago adicional de 3000</small>
+                <br><br><br>
+                <div style="position: relative; display: inline-flex; width: 100%; ">
+                    <div style="position: relative;">
+                        Total:
+                    </div>
+                    <div style="position: relative; width: 100%; text-align: end;">
+                        $&nbsp;300300
+                    </div>
+                </div>
+                <div style="width: 100%; padding: 0.5px; background: black;"></div>
+                <br><br><br>
+                <button style="position: relative; background: red; color:white; float: right;" type="button"
+                    class="btn">Comprar</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

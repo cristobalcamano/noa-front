@@ -1,0 +1,81 @@
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="my-5">
+
+  <footer class="text-white text-center text-lg-start bg-dark">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row mt-4">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Términos y condiciones</h5>
+
+          <p>
+            {{company.termConditions}}
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4 pb-1">Encuentranos</h5>
+
+
+          <ul class="fa-ul" style="margin-left: 1.65em;">
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">{{company.phone}}</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">{{company.email}}</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">{{company.address}}</span>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Horario</h5>
+
+          <table class="table text-center text-white">
+            <tbody class="fw-normal">
+              <tr *ngFor="let schedule of company.shedule">
+                <td>{{schedule.label}}</td>
+                <td>{{schedule.value}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <!--Grid column-->
+      </div>
+
+
+      <div class="mt-4">
+        <div style="text-align: center; display: inline-flex;">
+          <!-- Facebook -->
+          <div *ngFor="let social of company.socialNetwork">
+            <a style="border-radius: 100px;" type="button" href="{{social.url}}" target="_blank"
+            class="btn btn-floating btn-light "><i
+                class="{{social.logo}}"></i></a>
+                &#160;&#160;</div>
+                
+          
+        </div>
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white" href="https://noa.com/">NOA.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+</div>
+<!-- End of .container -->

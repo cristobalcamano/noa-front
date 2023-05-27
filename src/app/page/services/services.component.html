@@ -1,0 +1,108 @@
+<app-nav></app-nav>
+
+<div class="" style="background: rgba(117, 202, 218, 0.2); width: 100%;">
+    <div class="container-fluid col-10">
+      <div class="px-lg-5">
+  
+        <!-- For demo purpose -->
+        <div *ngIf="!showMore"class="row py-5" >
+          <div class="col-lg-12 mx-auto">
+            <div class="text-white p-5 shadow-sm rounded banner">
+              <div (click)="showMoreDown()"
+              style="height: 50px; cursor: pointer; position: absolute; top: 120px;">
+                ver menos &nbsp; <i class="bi bi-chevron-double-up"></i>
+              </div>
+              <h1 class="display-4">{{category.name}} </h1>
+              <label *ngFor="let serv of serviciosSelected"> &nbsp; -> &nbsp;{{serv.name}}</label>
+              <br><br>
+              <p class="lead">{{category.description}}</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showMore">
+          <div class="row py-5" >
+            <div class="col-lg-12 mx-auto">
+              <div (click)="showMoreDown()" class="text-white p-3 shadow-sm rounded banner" 
+              style="height: 50px; cursor: pointer;">
+                ver mas &nbsp; <i class="bi bi-chevron-double-down"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End -->
+  
+        <div class="row">
+          <!-- Gallery item -->
+  
+          <div class="col-xl-4 col-lg-4 col-md-4 mb-4" *ngFor="let s of servicios">
+            <div class="bg-white rounded shadow-sm">
+              <!--Inicio carrusel-->
+  
+              <div id="carouselExampleIndicators{{s.id}}" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div *ngFor="let i of s.imgService;">
+                    <div class="carousel-item" [class.active]="i.url==s.imgService[0].url">
+                      <img src="{{i.url}}" class="d-block w-100"
+                        alt="First Slide">
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators{{s.id}}" role="button"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators{{s.id}}" role="button"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
+              <!--Fin carrusel-->
+              <div class="p-4">
+                <div style="display: inline-flex;">
+                <h1 *ngIf="s.price">$ {{s.price}}</h1>&nbsp;&nbsp;&nbsp;
+                <label *ngIf="s.beforePrice" style="font-size: 10px;color: white;padding-left: 5px;
+                background: red; border-radius: 5px; padding: 2px; height: 25px;">
+                  <Strong><s> Antes {{s.beforePrice}}</s></Strong> </label>
+                </div>
+                <h5 class="text-dark"> {{s.name}}</h5>
+                <p class="small text-muted mb-0">{{s.description}}</p>
+                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                  <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span
+                      class="font-weight-bold">{{s.characteristics}}</span></p>
+  
+                </div>
+                <br>
+                <div style="margin-left: 60%;">
+                  <button *ngIf="!s.price" type="button" (click)="selectService(s)" class="btn btn-primary">Seleccionar</button>
+                  <button *ngIf="s.price" (click)="redirectToProduct(s)" type="button" class="btn btn-danger">Agregar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End -->
+  
+        </div>
+        <div style="display: inline-flex; position: relative; float: right;">
+          <div class="btn btn-danger px-5 py-3">Regresar</div>
+        </div>
+        <br><br><br><br><br>
+      </div>
+    </div>
+  
+  </div>
+  
+  <style>
+    body {
+      background: #f4f4f4;
+    }
+  
+    .banner {
+      background: #a770ef;
+      background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+      background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+    }
+  </style>
+
+<app-footer></app-footer>

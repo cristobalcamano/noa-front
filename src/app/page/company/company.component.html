@@ -1,0 +1,75 @@
+<app-nav></app-nav>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+
+    <div *ngFor="let i of company.imgPrincipal;" class="carousel-item" [class.active]="i.url==company.imgPrincipal[0].url">
+      <img src="{{i.url}}" class="d-block w-100">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Contenido -->
+<!-- card 1 -->
+<br><br><br><br><br>
+<div class="container">
+  <div style="display: inline-flex; width: 100%;">
+    <div style="width: 30%; height: 1px; background: black; position: relative; top: 20px;"></div>
+    <h1 style="width: 40%; text-align: center;" class="title-category">Categorias</h1>
+    <div style="width: 30%; height: 1px; background: black; position: relative; top: 20px;"></div>
+  </div>
+  <br><br>
+
+  <div class="row">
+    <!-- Gallery item -->
+
+    <div class="col-xl-6 col-lg-6 col-md-6 mb-6" *ngFor="let s of company.category">
+      <div class="bg-white rounded shadow-sm" >
+        <!--Inicio carrusel-->
+
+        <div id="carouselExampleIndicators{{s.id}}" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let i of s.imgcategory;">
+              <div class="carousel-item" [class.active]="i.url==s.imgcategory[0].url">
+                <img src="{{i.url}}" class="d-block w-100"
+                  alt="First Slide">
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators{{s.id}}" role="button"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators{{s.id}}" role="button"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+        <!--Fin carrusel-->
+        <div class="p-4">
+          <h1 >{{s.name}}</h1>
+          <p class="small text-muted mb-0">{{s.description}}</p>
+          <br>
+          <div style="position: relative; float: right;">
+            <button type="button" class="btn btn-primary" (click)="redirect(s)">Seleccionar</button>
+          </div>
+          <br><br><br>
+        </div>
+      </div>
+    </div>
+    <!-- End -->
+
+  </div>
+</div>
+<app-footer></app-footer>
